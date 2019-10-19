@@ -1,14 +1,27 @@
 import request from "request";
 import puppeteer from "puppeteer";
+import ping from "ping";
+
+export const pingCheck = (url) => {
+  return new Promise(function(resolve, reject) {
+    ping.sys.probe(url,  function(isAlive) {
+      if (isAlive) {
+        return resolve('up');
+      } else {
+        return resolve('down');
+      }
+    }, {timeout: 5000, extra: ["-i 2"]});
+  });
+};
 
 export const asyncRequest = (url) => {
   return new Promise(function(resolve, reject) {
-    request({url: url, timeout: 10000}, function(error, res, body) {
+    request({url: url, timeout: 5000}, function(error, res, body) {
       if (error) {
         console.log('REQUEST Error: ', error);
-        return reject(error);
+        return resolve(null);
       } else {
-        return resolve(body.toString());
+        return resolve(res.statusCode);
       }
     });
   });

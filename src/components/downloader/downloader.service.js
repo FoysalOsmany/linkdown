@@ -8,8 +8,6 @@ export class DownloaderService {
   }
 
   download(url) {
-    console.log('scrap', url);
-
     return asyncBrowse(url)
       .then(body => {
         let $ = cheerio.load(body);
@@ -19,8 +17,8 @@ export class DownloaderService {
           .find('p')
           .each((index, element) => {
             if (element
-            && $(element).html()
-            && $(element).html().includes('Current version')) {
+              && $(element).html()
+              && $(element).html().includes('Current version')) {
               versionSection = $(element).html();
             }
           });
@@ -30,6 +28,7 @@ export class DownloaderService {
 
           versionSection.split('<b>').forEach(versionInfo => {
             if (versionInfo.includes('</b>') && versionInfo) {
+              console.log(versionInfo);
               const versionMatch = versionInfo.substring(0, versionInfo.indexOf('</b>'));
 
               console.log(versionMatch);
@@ -45,10 +44,10 @@ export class DownloaderService {
                 if (versionInfo.includes('SharePoint 2019') || versionInfo.includes('2019')) {
                   this.version['sharePoint2019'] = versionNumber;
                 }
-                if (versionInfo.includes('SharePoint 2016' || versionInfo.includes('2016'))) {
+                if (versionInfo.includes('SharePoint 2016') || versionInfo.includes('2016')) {
                   this.version['sharePoint2016'] = versionNumber;
                 }
-                if (versionInfo.includes('SharePoint 2013' || versionInfo.includes('2013'))) {
+                if (versionInfo.includes('SharePoint 2013') || versionInfo.includes('2013')) {
                   this.version['sharePoint2013'] = versionNumber;
                 }
               }
