@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/FoysalOsmany/linkdown#readme",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
     "express": "^4.17.1",
     "puppeteer": "^1.20.0",
     "q": "^1.5.1",
