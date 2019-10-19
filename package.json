@@ -2,7 +2,7 @@
   "name": "linkdown",
   "version": "1.0.0",
   "description": "Link Download & Broken Link Detection",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
