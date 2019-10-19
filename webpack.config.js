@@ -5,6 +5,7 @@ module.exports = {
   entry: {
     server: './src/server.js',
   },
+  devtool: "inline-source-map",
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: '/',

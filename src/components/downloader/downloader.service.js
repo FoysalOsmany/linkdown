@@ -1,17 +1,19 @@
 import Q from "q";
-import {asyncRequest} from "../../utils";
+import {asyncBrowse, asyncRequest} from "../../utils";
 
 export class DownloaderService {
-  constructor() {}
+  constructor() {
+  }
 
   download(url) {
     console.log('scrap', url);
-    return asyncRequest(url)
-      .then((d) => {
-        console.log('DATA', d);
+    return Q.all([
+      asyncRequest(url),
+      asyncBrowse(url)
+    ]).spread((httpData, browsedData) => {
         return Q.resolve({
-          url: url,
-          length: d ? d.length : 0
+          httpData,
+          browsedData
         })
       })
       .catch(e => {
