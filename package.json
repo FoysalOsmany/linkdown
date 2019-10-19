@@ -28,7 +28,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "puppeteer": "^1.20.0",
-    "q": "^1.5.1"
+    "q": "^1.5.1",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",

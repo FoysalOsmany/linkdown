@@ -7,8 +7,8 @@ export class DownloaderRoutes {
 
   download(req, res) {
     console.log(req.query['url']);
-    this.downloaderService.download(req.query['url'])
-      .then((data) => res.send(data))
-      .catch((e) => res.status(400).send(e))
+    return this.downloaderService.download(req.query['url'])
+      .then(data => res.send(data))
+      .catch(e => res.status(400).send(e))
   }
 }
