@@ -1,4 +1,5 @@
 import express from 'express';
+import {ComponentRoutes} from "./components/component.routes";
 
 class Server {
   constructor() {
@@ -9,7 +10,14 @@ class Server {
   }
 
   routes() {
+    let componentRoutes = new ComponentRoutes();
+    let router = componentRoutes.setupRoutes();
+
+    // Add Routes from Component Routes
+    this.app.use(router);
+
     this.app.use((err, _req, res, next) => {
+      console.error(`Error: ${err}`);
 
       err.status ? res.status(err.status).send(err.msg) : res.status(400).send(err);
 
