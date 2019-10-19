@@ -16,7 +16,7 @@ class Server {
       return next();
     });
 
-    this.app.get('/healthCheck', cors(), (_req, res) => {
+    this.app.get('/healthCheck', (_req, res) => {
       res.send(`Server is up for ${process.uptime()}s`);
     });
   }

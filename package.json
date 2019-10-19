@@ -4,6 +4,8 @@
   "description": "Link Download & Broken Link Detection",
   "main": "src/server.js",
   "scripts": {
+    "build": "rm -rf dist && webpack --mode development",
+    "start": "npm run build && nodemon ./dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,6 +34,7 @@
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
     "babel-loader": "^8.0.6",
+    "nodemon": "^1.19.4",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
     "webpack-node-externals": "^1.7.2"
